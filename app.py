@@ -10,7 +10,7 @@ import os
 
 # Load CSV data or use synthetic data for 50 points
 def load_data():
-    file_path = "C:/Users/ASUS/OneDrive/Documents/mercenary_whale_agent/data.csv"
+    file_path = "data.csv"
     st.write(f"Checking for CSV file at: {file_path}")
     st.write(f"File exists: {os.path.isfile(file_path)}")  # Debug file existence
     try:
