@@ -14,7 +14,7 @@ print(df.head())
 if not os.path.exists(file_path):
     print('CSV file doesnt exist')
 else:
-    df=pd.read_csv(r'C:\Users\ASUS\OneDrive\Documents\mercenary_whale_agent\data.csv.csv')
+    df=pd.read_csv('data.csv')
     print('CSV File loaded')
     print(df.head())
 
