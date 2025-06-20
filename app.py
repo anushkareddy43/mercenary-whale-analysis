@@ -8,17 +8,17 @@ from sklearn.preprocessing import StandardScaler
 from datetime import datetime, timedelta
 import os
 
-# Input section for Etherscan addresses
+# Input section for Token Address and API Key
 st.title("Mercenary Whale Clustering 🐳")
-st.header("Address Inputs")
-etherscan_wallet = st.text_input("Etherscan Wallet Address", "0x26261D5fC06de4d39F253D05a58E62B48750Aa6D")
-token_contract = st.text_input("Token Contract Address", "0x8c018fE62835615565D5fbe28e6bAc6960888F4D")
-personal_wallet = st.text_input("Personal Wallet Address", "0x5418226aF9C8d5D287A78FbBbCD337b86ec07D61")
-st.write("Analyzing transactions for the provided addresses...")
+st.header("Etherscan Inputs")
+token_contract = st.text_input("Token Contract Address", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48")
+api_key = st.text_input("Etherscan API Key", "N6QDZK4UY8QJNHFFPMWUTNSXPC2NWJAWNQ")
+st.write("Analyzing transactions for the provided token address using Etherscan API...")
 
 # Load CSV data or use synthetic data for 50 points
 def load_data():
-    file_path = "data.csv"
+    default_path = "C:/Users/ASUS/OneDrive/Documents/mercenary_whale_agent/data.csv"
+    file_path = st.text_input("Enter CSV file path", default_path)
     st.write(f"Checking for CSV file at: {file_path}")
     st.write(f"File exists: {os.path.isfile(file_path)}")  # Debug file existence
     try:
