@@ -35,5 +35,5 @@ Targets the ['Investor Archetype Agent'] track-4.
 
 ## 📊 Architecture Diagram
 
-![Architecture Diagram](docs/agent_architecture.png)
+![Architecture Diagram]'Downloads\agent_architecture.png.png'
 
