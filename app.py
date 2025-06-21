@@ -17,7 +17,7 @@ st.write("Analyzing transactions for the provided token address using Etherscan 
 
 # Load CSV data or use synthetic data for 50 points
 def load_data():
-    default_path = "C:/Users/ASUS/OneDrive/Documents/mercenary_whale_agent/data.csv"
+    default_path = "data.csv"
     file_path = st.text_input("Enter CSV file path", default_path)
     st.write(f"Checking for CSV file at: {file_path}")
     st.write(f"File exists: {os.path.isfile(file_path)}")  # Debug file existence
