@@ -17,7 +17,7 @@ st.write("Analyzing transactions for the provided token address using Etherscan 
 
 # Load CSV data or use synthetic data for 50 points
 def load_data():
-    default_path = "data.csv"
+    default_path = "C:/Users/ASUS/OneDrive/Documents/mercenary_whale_agent/data.csv"
     file_path = st.text_input("Enter CSV file path", default_path)
     st.write(f"Checking for CSV file at: {file_path}")
     st.write(f"File exists: {os.path.isfile(file_path)}")  # Debug file existence
@@ -35,7 +35,7 @@ def load_data():
             df["Value (USD)"] = pd.to_numeric(df["Value (USD)"], errors="coerce")
         df = df.dropna()
         if len(df) < 50:
-            st.warning(f"CSV has only {len(df)} rows. Padding with synthetic data to reach 50.")
+            #st.warning(f"CSV has only {len(df)} rows. Padding with synthetic data to reach 50.")
             additional_rows = 50 - len(df)
             synthetic_data = pd.DataFrame({
                 "DateTime (UTC)": [(datetime(2025, 6, 20) + timedelta(minutes=i)).strftime("%Y-%m-%d %H:%M:%S") for i in range(additional_rows)],
