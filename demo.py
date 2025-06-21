@@ -5,8 +5,8 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import os
 
-file_path = "data.csv.csv"
-df = pd.read_csv('data.csv')
+file_path = "data.csv"
+df = pd.read_csv(file_path)
 print(df.head())
 
 
@@ -21,23 +21,31 @@ else:
 
 
 #converting the quantity and value into float values from string
-df['Quantity']=df['Quantity'].str.replace(',','').astype(float)
-df['Value']=df['Value'].str.replace('[/$,]','',regex=True).astype(float)
+# For Value (USD)
+if 'Value (USD)' in df.columns:
+    if df['Value (USD)'].dtype == 'object':
+        df['Value (USD)'] = pd.to_numeric(df['Value (USD)'].str.replace('$', '').str.replace(',', ''), errors='coerce')
+    else:
+        df['Value (USD)'] = pd.to_numeric(df['Value (USD)'], errors='coerce')
+else:
+    print("Warning: 'Value (USD)' column not found. Check data.csv columns.")
 
-print(df['Quantity'].dtype) #checking the typepython demo.py
-
-
+# For Amount
+if 'Amount' in df.columns:
+    df['Amount'] = pd.to_numeric(df['Amount'], errors='coerce')
+else:
+    print("Warning: 'Amount' column not found. Check data.csv columns.")
 
 from sklearn.preprocessing import MinMaxScaler #feature scaling
 
-df['nplog_quantity']=np.log1p(df['Quantity'])
+df['nplog_amount']=np.log1p(df['Amount'])
 df['nplog_value']=np.log1p(df['Value'])
 
-feature_to_scale=df[['nplog_quantity','nplog_value']]
+feature_to_scale=df[['nplog_amount','nplog_value']]
 
 scaler = MinMaxScaler()
 scaler_data = scaler.fit_transform(feature_to_scale)
-scaler_data=pd.DataFrame(scaler_data,columns=['Quantity','Value'])
+scaler_data=pd.DataFrame(scaler_data,columns=['Amount','Value'])
 print(scaler_data.head())
 print(scaler_data.describe())
 
