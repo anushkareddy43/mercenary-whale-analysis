@@ -33,3 +33,7 @@ Preprocessed to handle NaN values.
 
 Targets the ['Investor Archetype Agent'] track-4.
 
+## 📊 Architecture Diagram
+
+![Architecture Diagram](docs/agent_architecture.png)
+
